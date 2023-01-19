@@ -1,0 +1,33 @@
+:root {
+    --l-gray: rgba(206, 206, 206, 0.353);
+    --purple: rgb(77, 47, 100);
+}
+
+.bg-l-gray {
+    background-color: var(--l-gray)
+}
+
+.text-purple {
+    color: var(--purple) !important;
+}
+
+.border-purple {
+    border-color: var(--purple) !important;
+}
+
+.loading {
+    position: relative;
+}
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 100%;
+    animation: loading 1s infinite linear;
+    background-color: var(--l-gray);
+}
+@keyframes loading {
+    to {
+        width: 100%;
+    }
+}
