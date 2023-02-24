@@ -3,6 +3,10 @@
     --purple: rgb(77, 47, 100);
 }
 
+html {
+    margin-bottom: 100px;
+}
+
 .bg-l-gray {
     background-color: var(--l-gray)
 }
@@ -18,6 +22,7 @@
 .loading {
     position: relative;
 }
+
 .loading::after {
     content: '';
     position: absolute;
@@ -26,8 +31,29 @@
     animation: loading 1s infinite linear;
     background-color: var(--l-gray);
 }
+
 @keyframes loading {
     to {
         width: 100%;
+    }
+}
+
+.spin {
+    border: solid 4px #cfd0d1;
+    border-bottom-color: #1c87c9;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    will-change: transform;
+    animation: 1.5s linear infinite spinner;
+    animation-play-state: inherit;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
     }
 }

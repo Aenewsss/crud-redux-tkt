@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import UsersList from './components/UsersList'
+import Home from './components/Home'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="container">
-      <UsersList />
+      <Home />
     </div>
   )
 }

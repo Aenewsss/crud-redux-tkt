@@ -1,31 +1,23 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../store";
+import { useSelector } from "react-redux";
 import { IStore, IUser } from "../store/types/types";
+import { useThunk } from "../hooks/useThunk";
+import { useEffect } from "react";
 import SkeletonLoader from "./SkeletonLoader";
 import ButtonDeleteUser from "./ButtonDeleteUser";
 import ButtonDropdown from "./ButtonDropdown";
-import ButtonAddUser from "./ButtonAddUser ";
+import { fetchUsers } from "../store";
 
 const UsersList = () => {
+    const { data } = useSelector((store: IStore) => store.users);
 
-    const dispatch = useDispatch();
+    const [doFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUsers);
 
-    const { isLoading, data, error } = useSelector((store: IStore) => {
-        return store.users;
-    })
-
-    useEffect(() => {
-        dispatch(fetchUsers());
-    }, []);
-
-    if (isLoading) return <SkeletonLoader />
-
-    if (error) return <p>Error fetching data...</p>
+    useEffect(() => { doFetchUsers() }, [doFetchUsers]);
 
     const renderedUser = data.map((user: IUser) => {
+        if (isLoadingUsers) return <SkeletonLoader />
         return (
-            <div className="border rounded-3 border-info mt-5 d-flex justify-content-between" key={user.id}>
+            <div key={user.id} className="p-3 border rounded-3 mt-5 d-flex justify-content-between">
                 <div className="d-flex gap-4 ms-4">
                     <ButtonDeleteUser user={user} />
                     <p className="fs-2 m-0 fw-light">{user.name}</p>
@@ -36,14 +28,14 @@ const UsersList = () => {
     })
 
     return (
-        <div className="mt-5 d-flex flex-column">
-            <div className="d-flex justify-content-between">
-                <h1 className="display-5">List of users</h1>
-                <ButtonAddUser />
-            </div>
-            {renderedUser}
-        </div>
-    );
+        <>
+            {
+                loadingUsersError
+                    ? <p>Error fetching data...</p>
+                    : renderedUser
+            }
+        </>
+    )
 }
 
 export default UsersList;

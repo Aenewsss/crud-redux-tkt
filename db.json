@@ -1,10 +1,10 @@
 {
-    "users": [
-        {
-            "id": "1239dasdaqwe12783asda",
-            "name": "Aenã"
-        }
-    ],
-    "albums": [],
-    "photos": []
+  "users": [
+    {
+      "name": "Steven Rippin",
+      "id": "qgl6C4i"
+    }
+  ],
+  "albums": [],
+  "photos": []
 }
