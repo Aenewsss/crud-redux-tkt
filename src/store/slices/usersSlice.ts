@@ -7,7 +7,7 @@ import { removeUser } from "../thunks/removeUser";
 const initialState: IUsersInitialState = {
     data: [],
     isLoading: false,
-    error: null
+    error: null,
 }
 
 const usersSlice = createSlice({

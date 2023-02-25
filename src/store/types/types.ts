@@ -1,7 +1,7 @@
 export interface IUsersInitialState {
     data: IUser[],
     isLoading: boolean,
-    error: any
+    error: any,
 }
 
 export interface IUser {

@@ -1,12 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../store";
-import { IStore, IUser } from "../store/types/types";
-import SkeletonLoader from "./SkeletonLoader";
-import ButtonDeleteUser from "./ButtonDeleteUser";
-import ButtonDropdown from "./ButtonDropdown";
 import ButtonAddUser from "./ButtonAddUser ";
-import { useThunk } from "../hooks/useThunk";
+import Spinner from "./Spinner";
 import UsersList from "./UsersList";
 
 const Home = () => {

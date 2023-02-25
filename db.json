@@ -1,8 +1,12 @@
 {
   "users": [
     {
-      "name": "Steven Rippin",
-      "id": "qgl6C4i"
+      "name": "Amber Sipes",
+      "id": 1
+    },
+    {
+      "name": "Scott Ernser",
+      "id": 2
     }
   ],
   "albums": [],
