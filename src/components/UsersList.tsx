@@ -6,6 +6,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import ButtonDeleteUser from "./ButtonDeleteUser";
 import ButtonDropdown from "./ButtonDropdown";
 import { fetchUsers } from "../store";
+import UserPanel from "./UserPanel";
 
 const UsersList = () => {
     const { data } = useSelector((store: IStore) => store.users);
@@ -16,15 +17,7 @@ const UsersList = () => {
 
     const renderedUser = data.map((user: IUser) => {
         if (isLoadingUsers) return <SkeletonLoader />
-        return (
-            <div key={user.id} className="p-3 border rounded-3 mt-5 d-flex justify-content-between">
-                <div className="d-flex gap-4 ms-4">
-                    <ButtonDeleteUser user={user} />
-                    <p className="fs-2 m-0 fw-light">{user.name}</p>
-                </div>
-                <ButtonDropdown user={user} />
-            </div>
-        )
+        return <UserPanel user={user} />
     })
 
     return (
